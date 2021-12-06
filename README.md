@@ -1,10 +1,8 @@
-# FullCalendar
+# Poapper Hackaton - Poapper Schedule Management Planner
 
-A full-sized drag & drop JavaScript event calendar
+Team : 박범순 한주하
 
-- [Project website and demos](http://fullcalendar.io/)
-- [Documentation](http://fullcalendar.io/docs)
-- [Support](http://fullcalendar.io/support)
-- [Contributing](CONTRIBUTING.md)
-- [Changelog](CHANGELOG.md)
-- [License](LICENSE.txt)
+It is implemented by using Fullcalendar library
+
+Use Node.js, html/css ...
+
