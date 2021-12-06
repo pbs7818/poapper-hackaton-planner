@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang='ko'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Planner</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/earlyaccess/jejugothic.css');
+           
+        html, body {
+            margin-top: 12px;
+            font-family: 'Jeju Gothic', sans-serif;
+            font-size: 14px;
+        }
+    </style>
+    <link href='lib/main.css' rel='stylesheet' />
+    <script src='lib/main.js'></script>
+    <script src='lib/locales/ko.js'></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            customButtons: {
+                myCustomButton: {
+                    text: 'Long-term 일정 추가',
+                    click: function() {
+                        var title = prompt('일정 제목을 적을 수 있습니다.');
+                        if(title) {
+                            var start = prompt('시작 일 (YYYY-MM-DD)');
+                            if(start) {
+                                var end = prompt('종료 일+1 (YYYY-MM-DD)');
+                                calendar.addEvent({
+                                    title: title,
+                                    start: String(start),
+                                    end: String(end)
+                                });
+                            }
+                        }
+                    }
+                
+                }
+            },
+            height: 700,
+            eventColor : 'darkgray', 
+            expandRows: true,
+            slotMinTime: '00:00',
+            slotMaxTime: '24:00',
+            initialView: 'dayGridMonth',
+            locale: 'ko',
+            headerToolbar: {
+                left: 'prevYear,prev,next,nextYear today',
+                center: 'title',
+                right: 'myCustomButton dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            editable: true,
+            selectable: true,
+            nowIndicator: true,
+            navLinks: true,
+            dayMaxEvents: true,
+
+            select: function(arg) {
+                var title = prompt('일정 제목을 적을 수 있습니다.');
+                if (title) {
+                    calendar.addEvent({
+                        title: title,
+                        start: arg.start,
+                        end: arg.end,
+                        allDay: arg.allDay
+                    })
+                }
+                calendar.unselect()
+            },
+            eventClick: function(arg) {
+                if(confirm('해당 일정을 삭제하시겠습니까?\n제목 : ' + arg.event.title)) {
+                    arg.event.remove();
+                }
+            }
+        });
+        calendar.render();
+      });
+    </script>
+  </head>
+  <body>
+    <div id='calendar'></div>
+    <p>Poapper Hackaton Project</p>
+  </body>
+</html>
