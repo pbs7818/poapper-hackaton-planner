@@ -1,5 +1,5 @@
 # Poapper Hackaton - Poapper Schedule Management Planner
- 2021-fall-poapper-backend_project
+ 2021-fall-poapper-backend_seminar_project
 
 Team : 박범순 한주하
 
